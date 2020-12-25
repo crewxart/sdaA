@@ -1,0 +1,74 @@
+<odoo>
+    <data>
+    <!--  List factura-->
+
+        <record model="ir.ui.view" id="detalle_list">
+        <field name="name">Lista de facturas</field>
+        <field name="model">detalle</field>
+        <field name="arch" type="xml">
+        <tree>
+                    <field name="productos_id"/>
+                    <field name="precioNeto"/>
+
+                    <field name="cantidad"/>
+                    <field name="descuento"/>
+                    <field name="iva"/>
+                    <field name="subtotal" sum="Total_Of_Subtotal" string="Total"/>
+
+
+                    
+        </tree>
+        </field>
+        </record>
+
+    <!-- Form factura -->
+        
+        <record model="ir.ui.view" id="detalle_form">
+        <field name="name">Lista de facturas</field>
+        <field name="model">detalle</field>
+        <field name="arch" type="xml">
+        <form>
+            <sheet>
+                    <group>
+
+                    <field name="productos_id"/>
+                    <field name="precioNeto"/>
+
+                    <field name="cantidad"/>
+                    <field name="descuento"/>
+
+                    <field name="subtotal"/>
+
+                    </group>
+                    <group>
+                    </group>
+            </sheet>
+        </form>
+        </field>
+        </record>
+
+    <!-- Action window factura -->
+        <record model="ir.actions.act_window" id="detalle_action_window">
+            <field name="name">Lista de facturas</field>
+            <field name="res_model">detalle</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    <!-- Action server factura -->
+    <record model="ir.actions.server" id="detalle_action_server">
+      <field name="name">inventario server</field>
+      <field name="model_id" ref="model_detalle"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+
+   
+
+    </data>
+</odoo>
+    
