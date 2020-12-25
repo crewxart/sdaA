@@ -19,7 +19,7 @@ class producto(models.Model):
     descripcion = fields.Char()
     costoNeto = fields.Float()
     precioVenta = fields.Float()
-    #productos_ids = fields.One2many('detalle', 'productos_id')
+    productos_ids = fields.One2many('detalle', 'productos_id')
     stock=fields.Float()
     _sql_constraints = [('name', 'unique(name)', 'Este producto ya existe')
                     ]
